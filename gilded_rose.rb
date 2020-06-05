@@ -58,6 +58,9 @@ class BackspacePassUpdater < ItemUpdater
   end
 end
 
+class ConjuredUpdater < ItemUpdater
+end
+
 class SulfurasUpdater < ItemUpdater
   def age
     # do nothing
@@ -69,9 +72,10 @@ class SulfurasUpdater < ItemUpdater
 end
 
 UPDATERS = [
-  [AGED_BRIE,      AgedBrieUpdater],
-  [BACKSTAGE_PASS, BackspacePassUpdater],
-  [SULFURAS,       SulfurasUpdater]
+  [AGED_BRIE,         AgedBrieUpdater],
+  [BACKSTAGE_PASS,    BackspacePassUpdater],
+  [SULFURAS,          SulfurasUpdater],
+  [/\A#{CONJURED}\b/, ConjuredUpdater]
 ]
 
 def update_quality(items)
