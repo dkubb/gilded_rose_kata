@@ -23,9 +23,7 @@ module GildedRose
     end
 
     def age
-      unless name.eql?(SULFURAS)
-        self.sell_in -= 1
-      end
+      self.sell_in -= 1
     end
 
     def change_quality
@@ -56,6 +54,9 @@ module GildedRose
   end
 
   class SulfurasUpdater < ItemUpdater
+    def age
+      # do nothing
+    end
   end
 
   UPDATERS = [
