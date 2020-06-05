@@ -30,11 +30,7 @@ private
   end
 
   def value_change
-    if name.start_with?(CONJURED)
-      expired? ? -4 : -2
-    else
-      expired? ? -2 : -1
-    end
+    expired? ? -2 : -1
   end
 end
 
@@ -59,6 +55,9 @@ class BackspacePassUpdater < ItemUpdater
 end
 
 class ConjuredUpdater < ItemUpdater
+  def value_change
+    super() * 2
+  end
 end
 
 class SulfurasUpdater < ItemUpdater
