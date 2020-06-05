@@ -24,7 +24,7 @@ module GildedRose
       elsif name != 'Sulfuras, Hand of Ragnaros'
         self.quality -= 1
       end
-      if sell_in < 0
+      if sell_in.negative?
         if name == "Aged Brie"
           self.quality += 1
         elsif name == 'Backstage passes to a TAFKAL80ETC concert'
