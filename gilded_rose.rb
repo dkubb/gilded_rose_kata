@@ -55,9 +55,17 @@ module GildedRose
     end
   end
 
+  class SulfurasUpdater < ItemUpdater
+  end
+
+  UPDATERS = [
+    [SULFURAS, SulfurasUpdater]
+  ]
+
   def self.update_quality(items)
     items.each do |item|
-      ItemUpdater.new(item).call
+      _matcher, klass = UPDATERS.detect { |matcher, _klass| matcher === item.name }
+      (klass || ItemUpdater).new(item).call
     end
   end
 end
