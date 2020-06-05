@@ -22,9 +22,7 @@ private
   end
 
   def age
-    if name != SULFURAS
-      self.sell_in -= 1
-    end
+    self.sell_in -= 1
   end
 
   def change_quality
@@ -55,6 +53,9 @@ private
 end
 
 class SulfurasUpdater < ItemUpdater
+  def age
+    # do nothing
+  end
 end
 
 UPDATERS = [
