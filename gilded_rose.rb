@@ -30,9 +30,7 @@ private
   end
 
   def value_change
-    if name == AGED_BRIE
-      expired? ? 2 : 1
-    elsif name == BACKSTAGE_PASS
+    if name == BACKSTAGE_PASS
       if expired?
         -quality
       elsif sell_in < 5
@@ -51,6 +49,9 @@ private
 end
 
 class AgedBrieUpdater < ItemUpdater
+  def value_change
+    -super()
+  end
 end
 
 class SulfurasUpdater < ItemUpdater
