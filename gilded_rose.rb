@@ -27,9 +27,7 @@ module GildedRose
     end
 
     def change_quality
-      unless name.eql?(SULFURAS)
-        self.quality += value_change
-      end
+      self.quality += value_change
     end
 
     def value_change
@@ -55,6 +53,10 @@ module GildedRose
 
   class SulfurasUpdater < ItemUpdater
     def age
+      # do nothing
+    end
+
+    def change_quality
       # do nothing
     end
   end
