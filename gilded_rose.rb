@@ -9,10 +9,10 @@ class ItemUpdater < SimpleDelegator
     if name == 'Aged Brie' || name == 'Backstage passes to a TAFKAL80ETC concert'
       self.quality += 1
       if name == 'Backstage passes to a TAFKAL80ETC concert'
-        if sell_in < 11
+        if sell_in < 6
           self.quality += 1
         end
-        if sell_in < 6
+        if sell_in < 11
           self.quality += 1
         end
       end
