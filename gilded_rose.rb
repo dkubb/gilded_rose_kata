@@ -13,9 +13,9 @@ module GildedRose
 
     def call
       age
-      if name == AGED_BRIE
+      if name.eql?(AGED_BRIE)
         self.quality += expired? ? 2 : 1
-      elsif name == BACKSTAGE_PASS
+      elsif name.eql?(BACKSTAGE_PASS)
         self.quality +=
           if expired?
             -quality
@@ -28,7 +28,7 @@ module GildedRose
           end
       elsif name.start_with?(CONJURED)
         self.quality += expired? ? -4 : -2
-      elsif name != SULFURAS
+      elsif !name.eql?(SULFURAS)
         self.quality += expired? ? -2 : -1
       end
     end
@@ -40,7 +40,7 @@ module GildedRose
     end
 
     def age
-      if name != SULFURAS
+      unless name.eql?(SULFURAS)
         self.sell_in -= 1
       end
     end
