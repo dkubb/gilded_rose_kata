@@ -1,0 +1,7 @@
+---
+includes:
+- .
+integration: rspec
+requires:
+- ./gilded_rose.rb
+- ./gilded_rose_spec.rb

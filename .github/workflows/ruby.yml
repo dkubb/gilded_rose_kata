@@ -22,3 +22,5 @@ jobs:
         bundle --jobs 4 --retry 3
     - name: Run tests
       run: bundle exec rspec gilded_rose_spec.rb
+    - name: Run mutant
+      run: bundle exec mutant --ignore-subject GildedRose.update_quality -- GildedRose*
