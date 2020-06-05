@@ -54,6 +54,9 @@ class AgedBrieUpdater < ItemUpdater
   end
 end
 
+class BackspacePassUpdater < ItemUpdater
+end
+
 class SulfurasUpdater < ItemUpdater
   def age
     # do nothing
@@ -65,8 +68,9 @@ class SulfurasUpdater < ItemUpdater
 end
 
 UPDATERS = [
-  [AGED_BRIE, AgedBrieUpdater],
-  [SULFURAS,  SulfurasUpdater]
+  [AGED_BRIE,      AgedBrieUpdater],
+  [BACKSTAGE_PASS, BackspacePassUpdater],
+  [SULFURAS,       SulfurasUpdater]
 ]
 
 def update_quality(items)
