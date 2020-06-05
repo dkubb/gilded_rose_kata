@@ -12,9 +12,7 @@ class ItemUpdater < SimpleDelegator
 
   def call
     age
-    if name != SULFURAS
-      self.quality += value_change
-    end
+    change_quality
   end
 
 private
@@ -26,6 +24,12 @@ private
   def age
     if name != SULFURAS
       self.sell_in -= 1
+    end
+  end
+
+  def change_quality
+    if name != SULFURAS
+      self.quality += value_change
     end
   end
 
