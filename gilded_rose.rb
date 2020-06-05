@@ -2,6 +2,7 @@ require 'delegate'
 
 AGED_BRIE      = 'Aged Brie'
 BACKSTAGE_PASS = 'Backstage passes to a TAFKAL80ETC concert'
+CONJURED       = 'Conjured'
 SULFURAS       = 'Sulfuras, Hand of Ragnaros'
 
 class ItemUpdater < SimpleDelegator
@@ -26,6 +27,8 @@ class ItemUpdater < SimpleDelegator
         else
           1
         end
+    elsif name.start_with?(CONJURED)
+      self.quality += expired? ? -4 : -2
     elsif name != SULFURAS
       self.quality += expired? ? -2 : -1
     end
