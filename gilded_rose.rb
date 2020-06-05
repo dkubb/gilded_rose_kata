@@ -50,6 +50,9 @@ private
   end
 end
 
+class AgedBrieUpdater < ItemUpdater
+end
+
 class SulfurasUpdater < ItemUpdater
   def age
     # do nothing
@@ -61,7 +64,8 @@ class SulfurasUpdater < ItemUpdater
 end
 
 UPDATERS = [
-  [SULFURAS, SulfurasUpdater]
+  [AGED_BRIE, AgedBrieUpdater],
+  [SULFURAS,  SulfurasUpdater]
 ]
 
 def update_quality(items)
