@@ -1,12 +1,6 @@
 require 'delegate'
 
 module GildedRose
-  def self.update_quality(items)
-    items.each do |item|
-      ItemUpdater.new(item).call
-    end
-  end
-
   class ItemUpdater < SimpleDelegator
     alias_method :item, :__getobj__
 
@@ -54,6 +48,12 @@ module GildedRose
           end
         end
       end
+    end
+  end
+
+  def self.update_quality(items)
+    items.each do |item|
+      ItemUpdater.new(item).call
     end
   end
 end
