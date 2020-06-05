@@ -23,4 +23,4 @@ jobs:
     - name: Run tests
       run: bundle exec rspec gilded_rose_spec.rb
     - name: Run mutant
-      run: bundle exec mutant --ignore-subject GildedRose.update_quality -- GildedRose*
+      run: bundle exec mutant --ignore-subject GildedRose::ItemUpdater#call -- GildedRose*

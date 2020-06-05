@@ -1,6 +1,16 @@
+require 'delegate'
+
 module GildedRose
   def self.update_quality(items)
     items.each do |item|
+      ItemUpdater.new(item).call
+    end
+  end
+
+  class ItemUpdater < SimpleDelegator
+    alias_method :item, :__getobj__
+
+    def call
       if item.name != 'Aged Brie' && item.name != 'Backstage passes to a TAFKAL80ETC concert'
         if item.quality > 0
           if item.name != 'Sulfuras, Hand of Ragnaros'
