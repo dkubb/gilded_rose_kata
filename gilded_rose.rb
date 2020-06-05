@@ -7,22 +7,22 @@ module GildedRose
     end
 
     def call
+      if name != 'Sulfuras, Hand of Ragnaros'
+        self.sell_in -= 1
+      end
       if name == 'Aged Brie'
         self.quality += 1
       elsif name == 'Backstage passes to a TAFKAL80ETC concert'
         self.quality +=
-          if sell_in < 6
+          if sell_in < 5
             3
-          elsif sell_in < 11
+          elsif sell_in < 10
             2
           else
             1
           end
       elsif name != 'Sulfuras, Hand of Ragnaros'
         self.quality -= 1
-      end
-      if name != 'Sulfuras, Hand of Ragnaros'
-        self.sell_in -= 1
       end
       if sell_in < 0
         if name == "Aged Brie"
