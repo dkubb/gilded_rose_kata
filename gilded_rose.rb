@@ -27,7 +27,7 @@ class ItemUpdater < SimpleDelegator
       if name == "Aged Brie"
         self.quality += 1
       elsif name == 'Backstage passes to a TAFKAL80ETC concert'
-        self.quality = quality - quality
+        self.quality = 0
       elsif name != 'Sulfuras, Hand of Ragnaros'
         self.quality -= 1
       end
