@@ -30,17 +30,7 @@ private
   end
 
   def value_change
-    if name == BACKSTAGE_PASS
-      if expired?
-        -quality
-      elsif sell_in < 5
-        3
-      elsif sell_in < 10
-        2
-      else
-        1
-      end
-    elsif name.start_with?(CONJURED)
+    if name.start_with?(CONJURED)
       expired? ? -4 : -2
     else
       expired? ? -2 : -1
@@ -55,6 +45,17 @@ class AgedBrieUpdater < ItemUpdater
 end
 
 class BackspacePassUpdater < ItemUpdater
+  def value_change
+    if expired?
+      -quality
+    elsif sell_in < 5
+      3
+    elsif sell_in < 10
+      2
+    else
+      1
+    end
+  end
 end
 
 class SulfurasUpdater < ItemUpdater
