@@ -23,7 +23,7 @@ class ItemUpdater < SimpleDelegator
     elsif name != 'Sulfuras, Hand of Ragnaros'
       self.quality -= 1
     end
-    if sell_in.negative?
+    if expired?
       if name == "Aged Brie"
         self.quality += 1
       elsif name == 'Backstage passes to a TAFKAL80ETC concert'
@@ -32,6 +32,12 @@ class ItemUpdater < SimpleDelegator
         self.quality -= 1
       end
     end
+  end
+
+private
+
+  def expired?
+    sell_in.negative?
   end
 end
 
