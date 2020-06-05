@@ -51,6 +51,9 @@ module GildedRose
     end
   end
 
+  class AgedBrieUpdater < ItemUpdater
+  end
+
   class SulfurasUpdater < ItemUpdater
     def age
       # do nothing
@@ -62,6 +65,7 @@ module GildedRose
   end
 
   UPDATERS = [
+    [AGED_BRIE,     AgedBrieUpdater],
     [SULFURAS,      SulfurasUpdater],
     [proc { true }, ItemUpdater]
   ]
