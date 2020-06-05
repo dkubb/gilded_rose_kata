@@ -1,27 +1,23 @@
 require 'delegate'
 
 class ItemUpdater < SimpleDelegator
+  def quality=(quality)
+    super(quality.clamp(0, 50))
+  end
+
   def call
     if name != 'Aged Brie' && name != 'Backstage passes to a TAFKAL80ETC concert'
-      if quality > 0
-        if name != 'Sulfuras, Hand of Ragnaros'
-          self.quality -= 1
-        end
+      if name != 'Sulfuras, Hand of Ragnaros'
+        self.quality -= 1
       end
     else
-      if quality < 50
-        self.quality += 1
-        if name == 'Backstage passes to a TAFKAL80ETC concert'
-          if sell_in < 11
-            if quality < 50
-              self.quality += 1
-            end
-          end
-          if sell_in < 6
-            if quality < 50
-              self.quality += 1
-            end
-          end
+      self.quality += 1
+      if name == 'Backstage passes to a TAFKAL80ETC concert'
+        if sell_in < 11
+          self.quality += 1
+        end
+        if sell_in < 6
+          self.quality += 1
         end
       end
     end
@@ -31,18 +27,14 @@ class ItemUpdater < SimpleDelegator
     if sell_in < 0
       if name != "Aged Brie"
         if name != 'Backstage passes to a TAFKAL80ETC concert'
-          if quality > 0
-            if name != 'Sulfuras, Hand of Ragnaros'
-              self.quality -= 1
-            end
+          if name != 'Sulfuras, Hand of Ragnaros'
+            self.quality -= 1
           end
         else
           self.quality = quality - quality
         end
       else
-        if quality < 50
-          self.quality += 1
-        end
+        self.quality += 1
       end
     end
   end
