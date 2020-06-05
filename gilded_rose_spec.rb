@@ -5,14 +5,14 @@ RSpec.configure do |config|
   config.expect_with(:rspec) { |rspec| rspec.syntax = :should }
 end
 
-describe "#update_quality" do
+describe "GildedRose.update_quality" do
 
   context "with a single" do
     Given(:initial_sell_in) { 5 }
     Given(:initial_quality) { 10 }
     Given(:item) { Item.new(name, initial_sell_in, initial_quality) }
 
-    When { update_quality([item]) }
+    When { GildedRose.update_quality([item]) }
 
     context "normal item" do
       Given(:name) { "NORMAL ITEM" }
@@ -211,7 +211,7 @@ describe "#update_quality" do
       ]
     }
 
-    When { update_quality(items) }
+    When { GildedRose.update_quality(items) }
 
     Then { items[0].quality.should == 9 }
     Then { items[0].sell_in.should == 4 }
