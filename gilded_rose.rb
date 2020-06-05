@@ -12,6 +12,7 @@ module GildedRose
       end
       if name == 'Aged Brie'
         self.quality += 1
+        self.quality += 1 if expired?
       elsif name == 'Backstage passes to a TAFKAL80ETC concert'
         self.quality +=
           if expired?
@@ -26,11 +27,6 @@ module GildedRose
       elsif name != 'Sulfuras, Hand of Ragnaros'
         self.quality -= 1
         self.quality -= 1 if expired?
-      end
-      if expired?
-        if name == "Aged Brie"
-          self.quality += 1
-        end
       end
     end
 
