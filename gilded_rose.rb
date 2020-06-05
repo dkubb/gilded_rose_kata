@@ -12,23 +12,8 @@ class ItemUpdater < SimpleDelegator
 
   def call
     age
-    if name == AGED_BRIE
-      self.quality += expired? ? 2 : 1
-    elsif name == BACKSTAGE_PASS
-      self.quality +=
-        if expired?
-          -quality
-        elsif sell_in < 5
-          3
-        elsif sell_in < 10
-          2
-        else
-          1
-        end
-    elsif name.start_with?(CONJURED)
-      self.quality += expired? ? -4 : -2
-    elsif name != SULFURAS
-      self.quality += expired? ? -2 : -1
+    if name != SULFURAS
+      self.quality += value_change
     end
   end
 
@@ -41,6 +26,26 @@ private
   def age
     if name != SULFURAS
       self.sell_in -= 1
+    end
+  end
+
+  def value_change
+    if name == AGED_BRIE
+      expired? ? 2 : 1
+    elsif name == BACKSTAGE_PASS
+      if expired?
+        -quality
+      elsif sell_in < 5
+        3
+      elsif sell_in < 10
+        2
+      else
+        1
+      end
+    elsif name.start_with?(CONJURED)
+      expired? ? -4 : -2
+    else
+      expired? ? -2 : -1
     end
   end
 end
