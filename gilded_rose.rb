@@ -55,6 +55,9 @@ module GildedRose
     end
   end
 
+  class BackspacePassUpdater < ItemUpdater
+  end
+
   class SulfurasUpdater < ItemUpdater
     def age
       # do nothing
@@ -66,9 +69,10 @@ module GildedRose
   end
 
   UPDATERS = [
-    [AGED_BRIE,     AgedBrieUpdater],
-    [SULFURAS,      SulfurasUpdater],
-    [proc { true }, ItemUpdater]
+    [AGED_BRIE,      AgedBrieUpdater],
+    [BACKSTAGE_PASS, BackspacePassUpdater],
+    [SULFURAS,       SulfurasUpdater],
+    [proc { true },  ItemUpdater]
   ]
 
   def self.update_quality(items)
