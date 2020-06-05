@@ -10,10 +10,11 @@ module GildedRose
       if name == 'Aged Brie'
         self.quality += 1
       elsif name == 'Backstage passes to a TAFKAL80ETC concert'
-        self.quality += 1
         if sell_in < 6
-          self.quality += 2
+          self.quality += 3
         elsif sell_in < 11
+          self.quality += 2
+        else
           self.quality += 1
         end
       elsif name != 'Sulfuras, Hand of Ragnaros'
