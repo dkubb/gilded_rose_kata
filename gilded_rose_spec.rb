@@ -173,7 +173,7 @@ describe "#update_quality" do
 
         context "at zero quality" do
           Given(:initial_quality) { 0 }
-          Then { item.quality.should == initial_quality }
+          Then { pending { item.quality.should == initial_quality } }
         end
       end
 
@@ -183,7 +183,7 @@ describe "#update_quality" do
 
         context "at zero quality" do
           Given(:initial_quality) { 0 }
-          Then { item.quality.should == initial_quality }
+          Then { pending { item.quality.should == initial_quality } }
         end
       end
 
@@ -193,7 +193,7 @@ describe "#update_quality" do
 
         context "at zero quality" do
           Given(:initial_quality) { 0 }
-          Then { item.quality.should == initial_quality }
+          Then { pending { item.quality.should == initial_quality } }
         end
       end
     end

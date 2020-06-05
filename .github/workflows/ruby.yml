@@ -21,5 +21,4 @@ jobs:
         bundle config path vendor/bundle
         bundle --jobs 4 --retry 3
     - name: Run tests
-      # Exclude tests that are failing
-      run: bundle exec rspec gilded_rose_spec.rb --example-matches '#update_quality (?!with a single conjured item (?:before the|on|after) sell date at zero quality)'
+      run: bundle exec rspec gilded_rose_spec.rb
