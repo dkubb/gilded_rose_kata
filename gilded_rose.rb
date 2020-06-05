@@ -17,10 +17,8 @@ module GildedRose
             self.quality += 1
           end
         end
-      else
-        if name != 'Sulfuras, Hand of Ragnaros'
-          self.quality -= 1
-        end
+      elsif name != 'Sulfuras, Hand of Ragnaros'
+        self.quality -= 1
       end
       if name != 'Sulfuras, Hand of Ragnaros'
         self.sell_in -= 1
@@ -28,14 +26,10 @@ module GildedRose
       if sell_in < 0
         if name == "Aged Brie"
           self.quality += 1
-        else
-          if name == 'Backstage passes to a TAFKAL80ETC concert'
-            self.quality = quality - quality
-          else
-            if name != 'Sulfuras, Hand of Ragnaros'
-              self.quality -= 1
-            end
-          end
+        elsif name == 'Backstage passes to a TAFKAL80ETC concert'
+          self.quality = quality - quality
+        elsif name != 'Sulfuras, Hand of Ragnaros'
+          self.quality -= 1
         end
       end
     end
