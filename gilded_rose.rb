@@ -23,7 +23,7 @@ class ItemUpdater < SimpleDelegator
           1
         end
     elsif name != 'Sulfuras, Hand of Ragnaros'
-      self.quality -= expired? ? 2 : 1
+      self.quality += expired? ? -2 : -1
     end
   end
 
