@@ -6,11 +6,7 @@ class ItemUpdater < SimpleDelegator
   end
 
   def call
-    if name != 'Aged Brie' && name != 'Backstage passes to a TAFKAL80ETC concert'
-      if name != 'Sulfuras, Hand of Ragnaros'
-        self.quality -= 1
-      end
-    else
+    if name == 'Aged Brie' || name == 'Backstage passes to a TAFKAL80ETC concert'
       self.quality += 1
       if name == 'Backstage passes to a TAFKAL80ETC concert'
         if sell_in < 11
@@ -20,21 +16,25 @@ class ItemUpdater < SimpleDelegator
           self.quality += 1
         end
       end
+    else
+      if name != 'Sulfuras, Hand of Ragnaros'
+        self.quality -= 1
+      end
     end
     if name != 'Sulfuras, Hand of Ragnaros'
       self.sell_in -= 1
     end
     if sell_in < 0
-      if name != "Aged Brie"
-        if name != 'Backstage passes to a TAFKAL80ETC concert'
+      if name == "Aged Brie"
+        self.quality += 1
+      else
+        if name == 'Backstage passes to a TAFKAL80ETC concert'
+          self.quality = quality - quality
+        else
           if name != 'Sulfuras, Hand of Ragnaros'
             self.quality -= 1
           end
-        else
-          self.quality = quality - quality
         end
-      else
-        self.quality += 1
       end
     end
   end
