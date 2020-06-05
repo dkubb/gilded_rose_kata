@@ -13,9 +13,7 @@ module GildedRose
 
     def call
       age
-      unless name.eql?(SULFURAS)
-        self.quality += value_change
-      end
+      change_quality
     end
 
   private
@@ -27,6 +25,12 @@ module GildedRose
     def age
       unless name.eql?(SULFURAS)
         self.sell_in -= 1
+      end
+    end
+
+    def change_quality
+      unless name.eql?(SULFURAS)
+        self.quality += value_change
       end
     end
 
