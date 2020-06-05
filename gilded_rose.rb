@@ -3,45 +3,45 @@ require 'delegate'
 module GildedRose
   class ItemUpdater < SimpleDelegator
     def call
-      if self.name != 'Aged Brie' && self.name != 'Backstage passes to a TAFKAL80ETC concert'
-        if self.quality > 0
-          if self.name != 'Sulfuras, Hand of Ragnaros'
+      if name != 'Aged Brie' && name != 'Backstage passes to a TAFKAL80ETC concert'
+        if quality > 0
+          if name != 'Sulfuras, Hand of Ragnaros'
             self.quality -= 1
           end
         end
       else
-        if self.quality < 50
+        if quality < 50
           self.quality += 1
-          if self.name == 'Backstage passes to a TAFKAL80ETC concert'
-            if self.sell_in < 11
-              if self.quality < 50
+          if name == 'Backstage passes to a TAFKAL80ETC concert'
+            if sell_in < 11
+              if quality < 50
                 self.quality += 1
               end
             end
-            if self.sell_in < 6
-              if self.quality < 50
+            if sell_in < 6
+              if quality < 50
                 self.quality += 1
               end
             end
           end
         end
       end
-      if self.name != 'Sulfuras, Hand of Ragnaros'
+      if name != 'Sulfuras, Hand of Ragnaros'
         self.sell_in -= 1
       end
-      if self.sell_in < 0
-        if self.name != "Aged Brie"
-          if self.name != 'Backstage passes to a TAFKAL80ETC concert'
-            if self.quality > 0
-              if self.name != 'Sulfuras, Hand of Ragnaros'
+      if sell_in < 0
+        if name != "Aged Brie"
+          if name != 'Backstage passes to a TAFKAL80ETC concert'
+            if quality > 0
+              if name != 'Sulfuras, Hand of Ragnaros'
                 self.quality -= 1
               end
             end
           else
-            self.quality = self.quality - self.quality
+            self.quality = quality - quality
           end
         else
-          if self.quality < 50
+          if quality < 50
             self.quality += 1
           end
         end
