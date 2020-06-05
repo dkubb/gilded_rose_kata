@@ -1,11 +1,5 @@
 require 'delegate'
 
-def update_quality(items)
-  items.each do |item|
-    ItemUpdater.new(item).call
-  end
-end
-
 class ItemUpdater < SimpleDelegator
   alias_method :item, :__getobj__
 
@@ -53,6 +47,12 @@ class ItemUpdater < SimpleDelegator
         end
       end
     end
+  end
+end
+
+def update_quality(items)
+  items.each do |item|
+    ItemUpdater.new(item).call
   end
 end
 
