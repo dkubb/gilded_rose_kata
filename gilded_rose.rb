@@ -14,7 +14,9 @@ module GildedRose
         self.quality += 1
       elsif name == 'Backstage passes to a TAFKAL80ETC concert'
         self.quality +=
-          if sell_in < 5
+          if expired?
+            -quality
+          elsif sell_in < 5
             3
           elsif sell_in < 10
             2
@@ -28,8 +30,6 @@ module GildedRose
       if expired?
         if name == "Aged Brie"
           self.quality += 1
-        elsif name == 'Backstage passes to a TAFKAL80ETC concert'
-          self.quality = 0
         end
       end
     end
