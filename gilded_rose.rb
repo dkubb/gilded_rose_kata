@@ -31,9 +31,7 @@ module GildedRose
     end
 
     def value_change
-      if name.eql?(AGED_BRIE)
-        expired? ? 2 : 1
-      elsif name.eql?(BACKSTAGE_PASS)
+      if name.eql?(BACKSTAGE_PASS)
         if expired?
           -quality
         elsif sell_in < 5
@@ -52,6 +50,9 @@ module GildedRose
   end
 
   class AgedBrieUpdater < ItemUpdater
+    def value_change
+      -super()
+    end
   end
 
   class SulfurasUpdater < ItemUpdater
