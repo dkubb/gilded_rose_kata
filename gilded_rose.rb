@@ -1,17 +1,21 @@
 require 'delegate'
 
+AGED_BRIE      = 'Aged Brie'
+BACKSTAGE_PASS = 'Backstage passes to a TAFKAL80ETC concert'
+SULFURAS       = 'Sulfuras, Hand of Ragnaros'
+
 class ItemUpdater < SimpleDelegator
   def quality=(quality)
     super(quality.clamp(0, 50))
   end
 
   def call
-    if name != 'Sulfuras, Hand of Ragnaros'
+    if name != SULFURAS
       self.sell_in -= 1
     end
-    if name == 'Aged Brie'
+    if name == AGED_BRIE
       self.quality += expired? ? 2 : 1
-    elsif name == 'Backstage passes to a TAFKAL80ETC concert'
+    elsif name == BACKSTAGE_PASS
       self.quality +=
         if expired?
           -quality
@@ -22,7 +26,7 @@ class ItemUpdater < SimpleDelegator
         else
           1
         end
-    elsif name != 'Sulfuras, Hand of Ragnaros'
+    elsif name != SULFURAS
       self.quality += expired? ? -2 : -1
     end
   end
