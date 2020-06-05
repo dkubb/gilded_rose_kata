@@ -1,6 +1,10 @@
 require 'rspec/given'
 require 'gilded_rose'
 
+RSpec.configure do |config|
+  config.expect_with(:rspec) { |rspec| rspec.syntax = :should }
+end
+
 describe "#update_quality" do
 
   context "with a single" do
